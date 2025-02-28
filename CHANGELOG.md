@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 ## Unreleased
 No unreleased changes.
 
+## 0.8.0 - 2025-02-28
+### Added
+- Add webhook_triggered_at header to request data
+
 ## 0.7.0 - 2023-10-31
 ### Added
 - Add Webhook ID argument to signals (Fixes #13)

@@ -10,7 +10,7 @@ setup(
     long_description_content_type='text/markdown',
     author = 'Gavin Ballard',
     author_email = 'gavin@discolabs.com',
-    url = 'https://github.com/discolabs/django-shopify-webhook',
+    url = 'https://github.com/stlk/django-shopify-webhook',
     license = 'None',
 
     packages = find_packages(),
