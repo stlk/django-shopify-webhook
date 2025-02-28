@@ -36,6 +36,7 @@ class WebhookTestCase(TestCase):
         # Add required headers.
         headers['HTTP_X_SHOPIFY_TEST'] = 'true'
         headers['HTTP_X_SHOPIFY_SHOP_DOMAIN'] = domain
+        headers['HTTP_X_SHOPIFY_TRIGGERED_AT'] = '2025-01-22T13:54:50.415605767Z' 
 
         # Add optional headers.
         if topic:
