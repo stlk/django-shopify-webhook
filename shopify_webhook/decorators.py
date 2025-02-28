@@ -31,6 +31,7 @@ def webhook(f):
             domain  = request.META['HTTP_X_SHOPIFY_SHOP_DOMAIN']
             hmac    = request.META['HTTP_X_SHOPIFY_HMAC_SHA256'] if 'HTTP_X_SHOPIFY_HMAC_SHA256' in request.META else None
             webhook_id = request.META['HTTP_X_SHOPIFY_WEBHOOK_ID']
+            triggered_at = request.META['HTTP_X_SHOPIFY_TRIGGERED_AT']
             data    = json.loads(request.body.decode('utf-8'))
         except (KeyError, ValueError) as e:
             return HttpResponseBadRequest()
@@ -44,10 +45,11 @@ def webhook(f):
             return HttpResponseUnauthorized()
 
         # Otherwise, set properties on the request object and return.
-        request.webhook_topic   = topic
-        request.webhook_data    = data
-        request.webhook_domain  = domain
-        request.webhook_id      = webhook_id
+        request.webhook_topic        = topic
+        request.webhook_data         = data
+        request.webhook_domain       = domain
+        request.webhook_id           = webhook_id
+        request.webhook_triggered_at = triggered_at
         return f(request, *args, **kwargs)
 
     return wrapper
