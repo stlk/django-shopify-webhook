@@ -9,6 +9,7 @@ class WebhookSignal(Signal):
         * topic
         * data
         * webhook_id
+        * triggered_at
     """
     pass
 

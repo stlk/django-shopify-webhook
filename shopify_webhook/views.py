@@ -32,8 +32,8 @@ class WebhookView(View):
         # Convert the topic to a signal name and trigger it.
         signal_name = get_signal_name_for_topic(request.webhook_topic)
         try:
-            signals.webhook_received.send_robust(self, domain = request.webhook_domain, topic = request.webhook_topic, webhook_id = request.webhook_id, data = request.webhook_data)
-            getattr(signals, signal_name).send_robust(self, domain = request.webhook_domain, topic = request.webhook_topic, webhook_id = request.webhook_id, data = request.webhook_data)
+            signals.webhook_received.send_robust(self, domain = request.webhook_domain, topic = request.webhook_topic, webhook_id = request.webhook_id, data = request.webhook_data, triggered_at = request.webhook_triggered_at)
+            getattr(signals, signal_name).send_robust(self, domain = request.webhook_domain, topic = request.webhook_topic, webhook_id = request.webhook_id, data = request.webhook_data, triggered_at = request.webhook_triggered_at)
         except AttributeError:
             return HttpResponseBadRequest()
 
